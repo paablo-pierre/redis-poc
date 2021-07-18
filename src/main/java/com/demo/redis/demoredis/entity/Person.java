@@ -19,10 +19,11 @@ public class Person implements Serializable {
     @Id
     private Long id;
 
-    List<Data> data;
+    private List<Data> data;
 
-    /*private Long id;
-    private String firstName;
-    private String lastName;
-    private String gender;*/
+    private int total;
+
+    public static String generateRedisKey(Long account, int page, int size) {
+        return String.valueOf(account).concat("-").concat(String.valueOf(page)).concat("-").concat(String.valueOf(size));
+    }
 }

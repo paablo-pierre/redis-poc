@@ -19,24 +19,23 @@ public class PersonServiceImpl implements PersonService {
     private final PersonGateway personGateway;
     private final PersonRepository personRepository;
 
-    @Override
-    @Cacheable(cacheNames = "PERSON_CACHE", key = "#page")
-    public Person execute(Long account, int page, int size) {
-        if(verifyIfHasCache(account)) {
-            return searchPerson(account, page, size);
-        }
-
-        final var person = personGateway.find();
-
-        person.setId(account);
-
-        final var personToSave = personRepository.save(person);
-
-        return personToSave;
-    }
-
     private boolean verifyIfHasCache(Long id) {
         return personRepository.existsById(id);
+    }
+
+    @Override
+    @Cacheable(cacheNames = "PERSON_CACHE", key = "#redisKey")
+    public Person execute(Long account, int page, int size, String redisKey) {
+
+        if(!verifyIfHasCache(account)) {
+            final var person = personGateway.find();
+
+            person.setId(account);
+            personRepository.save(person);
+        }
+
+
+        return searchPerson(account, page, size);
     }
 
     private Person searchPerson(Long id, int page, int size) {
@@ -53,6 +52,7 @@ public class PersonServiceImpl implements PersonService {
             return Person.builder()
                     .id(person.get().getId())
                     .data(dataPage.getContent())
+                    .total(pessoa.getData().size())
                     .build();
         }
 

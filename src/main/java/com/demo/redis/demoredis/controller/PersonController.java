@@ -18,6 +18,7 @@ public class PersonController {
     public ResponseEntity<Person> getPerson(@PathVariable("account") Long account,
                                                  @RequestParam(name = "page", required = false, defaultValue = "1") Integer page,
                                                  @RequestParam(name = "size", required = false, defaultValue = "10") Integer size) {
-        return new ResponseEntity<>(personService.execute(account, page, size), HttpStatus.OK);
+        var redisKey = Person.generateRedisKey(account, page, size);
+        return new ResponseEntity<>(personService.execute(account, page, size, redisKey), HttpStatus.OK);
     }
 }
