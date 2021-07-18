@@ -1,0 +1,16 @@
+{
+    "id": "69ba439e-ff8f-41c8-a3d1-6c4ed25db4e5",
+    "request": {
+        "urlPathPattern": "/person",
+        "method": "GET"
+    },
+    "response": {
+        "status": 200,
+        "bodyFileName": "person/person-success.json",
+        "headers": {
+            "Content-Type": "application/json;charset=UTF-8"
+        }
+    },
+    "uuid": "69ba439e-ff8f-41c8-a3d1-6c4ed25db4e5",
+    "priority": 1
+}

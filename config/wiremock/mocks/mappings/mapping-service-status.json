@@ -1,0 +1,16 @@
+{
+    "id": "b856d5df-1ba8-4b4f-a1e3-fc5621d1dd04",
+    "request": {
+        "url": "/status",
+        "method": "GET"
+    },
+    "response": {
+        "status": 200,
+        "body": "Estou em pé!",
+        "headers": {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin" : "*"
+        }
+    },
+    "uuid": "b856d5df-1ba8-4b4f-a1e3-fc5621d1dd04"
+}

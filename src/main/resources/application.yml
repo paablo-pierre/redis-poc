@@ -1,0 +1,16 @@
+server:
+  port: 8090
+
+feign:
+  person-gateway:
+    name: person
+    url: localhost:8888
+
+spring:
+  redis:
+    host: localhost
+    port: 6379
+  cache:
+    type: redis
+    redis:
+      time-to-live: 10000000
