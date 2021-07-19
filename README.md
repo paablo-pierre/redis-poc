@@ -29,3 +29,24 @@ TTL "key"
 ```sh
 FLUSHALL
 ```
+
+## Configuração
+- Necessário adicionar as seguintes depedências de cache
+```sh
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-cache</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>redis.clients</groupId>
+    <artifactId>jedis</artifactId>
+    <version>3.3.0</version>
+    <type>jar</type>
+</dependency>
+
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-data-redis</artifactId>
+</dependency>
+```
